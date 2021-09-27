@@ -1,9 +1,11 @@
 function selectedIndividualIndex = TournamentSelect(fitnessList, tournamentProbability, tournamentSize);
     
     % SELECT RANDOM PARTICIPANTS
-    participants = zeros(1, tournamentSize);
+    % Currently the same participant can be chosen several times, should
+    % perhaps be fixed
+    participants = zeros(1, tournamentSize); % Note: it is indicises
     for i = 1:tournamentSize
-        iParticipant = 1 + fix(rand*size(fitnessList, 2)); 
+        iParticipant = 1 + fix(rand*size(fitnessList, 2));
         participants(i) = iParticipant;
     end 
     
