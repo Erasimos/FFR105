@@ -8,10 +8,10 @@ function nextNode = GetNode(pheromoneLevel, visibility, alpha, beta, tabuList, s
             continue
         end 
         
-        p = GetStepProbability(pheromoneLevel, visibility, alpha, beta, tabuList, startingNode, destinationNode)
+        p = GetStepProbability(pheromoneLevel, visibility, alpha, beta, tabuList, startingNode, destinationNode);
         pSum = pSum + p;
         
-        if pSum > pStop
+        if pSum >= pStop
             nextNode = destinationNode;
             return;
         end 
