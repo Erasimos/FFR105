@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Particle Swarm Optimization (PSO).
+% For determining function minima
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all;
+clc;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+numberOfParticles = 30;
+numberOfIterations = 500;
+deltaT = 1;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Initialization
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+particlePositions = InitializeParticlePositions();
+particleVelocities = InitializeParticleVelocities();
+
+particleVelocities = InitializeParticleVelocities(numberOfParticles, xMin, xMax, alpha, deltaT)
+particleBestPositions = zeros(numberOfParticles, 2);
+particleBestGlobalPosition = zeros(1,2);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main swarm loop
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+for iteration = 1:numberOfIterations    
+    % Update best positions
+    [particleBestPositions, particleBestGlobalPosition] = UpdateBestPositions(particlePositions, particleBestPositions, particleBestGlobalPosition);
+    
+    % Update particle velocities
+    particleVelocities = UpdateParticleVelocities(particleVelocities, deltaT);
+    
+    % Update particle positions
+    particlePositions = UpdateParticlePositions(particlePositions, particleVelocities, deltaT);
+    
+end
+
+
+
+
+
+
