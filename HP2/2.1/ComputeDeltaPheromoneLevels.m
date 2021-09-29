@@ -4,6 +4,7 @@ function deltaPheromoneLevel = ComputeDeltaPheromoneLevels(pathCollection,pathLe
     
     deltaPheromoneLevel = zeros(nCities, nCities);
 
+    % Sum delta pheromones for each ant, one ant at a time
     for k = 1:nAnts
         path = pathCollection(k,:);
         pathLength = pathLengthCollection(k);

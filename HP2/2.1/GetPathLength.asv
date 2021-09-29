@@ -3,9 +3,9 @@ function pathLength = GetPathLength(path,cityLocation)
     for iNode = 1:(length(path) - 1)
         startingNode = path(iNode);
         destinationNode = path(iNode + 1);
-        pathLength = pathLength + GetDistance(cityLocation(startingNode,:), cityLocation(destinationNode,:));
+        pathLength = pathLength + GetDistance(cityLocation(startingNode), cityLocation(destinationNode)ityLocation);
     end 
     
     % Add distance back to starting node
-    pathLength = pathLength + GetDistance(cityLocation(path(end),:), cityLocation(path(1),:));
+    pathLength = pathLength + GetDistance(path(end), path(1), cityLocation);
 end 

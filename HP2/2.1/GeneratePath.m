@@ -5,9 +5,9 @@ function path = GeneratePath(pheromoneLevel, visibility, alpha, beta)
     % Select Random Starting Node
     currentNode = round(rand*(nCitites-1) + 1);
    
-    tabuList = [currentNode];
+    tabuList = [currentNode]; % Add starting node to the tabu list
     path = zeros(nCitites, 1);
-    path(1) = currentNode;
+    path(1) = currentNode; % Add starting node in to the path
     
     for iNextNode = 2:nCitites
         nextNode = GetNode(pheromoneLevel, visibility, alpha, beta, tabuList, currentNode);
