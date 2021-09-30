@@ -1,0 +1,1 @@
+function chromosome = EncodeNetwork(wIH, wHO, wMax)
