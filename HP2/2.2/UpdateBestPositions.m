@@ -18,9 +18,6 @@ function [particleBestPositions, particleBestGlobalPosition] = UpdateBestPositio
         % Update global best position
         if fValParticle < fValGlobalBest
             particleBestGlobalPosition = pPos;
-            
-            % If global best was updated, print it
-            particleBestGlobalPosition
         end 
     end
 end 
