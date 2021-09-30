@@ -64,13 +64,6 @@ for run = 1:numberOfRuns
         foundPos = globalBestPositionsCollection(i,:);
         if GetDistance(foundPos, particleBestGlobalPosition) < 0.000001
             minimaAlreadyeFound = true;
-            
-            % if minima is already found, but with a difference in distance less
-            % than 0.000001, make sure that the point with the lowest function
-            % value is store
-            if GetFunctionValue(particleBestGlobalPosition(1), particleBestGlobalPosition(2)) < GetFunctionValue(foundPos(1), foundPos(2)) 
-                globalBestPositionsCollection(i,:) = particleBestGlobalPosition;
-            end 
         end
     end 
     if not (minimaAlreadyeFound)

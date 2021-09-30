@@ -2,8 +2,8 @@ function chromosome = EncodeNetwork(wIH, wHO, wMax)
     numberOfwIHGenes = size(wIH, 1)*size(wIH, 2);
     numberOfwHOGenes = size(wHO, 1)*size(wHO, 2);
     
-    wIHGenes = zeros(1, numberOfwIHGenes);
-    wHOGenes = zeros(1, numberOfwHOGenes);
+    wIHGenes = zeros(numberOfwIHGenes, 1);
+    wHOGenes = zeros(numberOfwHOGenes, 1);
     
     % Encode wIH genes
     for iGene = 1:numberOfwIHGenes
@@ -18,6 +18,9 @@ function chromosome = EncodeNetwork(wIH, wHO, wMax)
         g = (x + wMax)/(2*wMax);
         wHOGenes(iGene) = g;
     end 
+    
+    wIHGenes
+    wHOGenes
     
     chromosome = [wIHGenes wHOGenes];
     
