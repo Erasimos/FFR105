@@ -1,0 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FFNN with GA for optimization of 
+% braking systems
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all;
+clc;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+nIndividuals;
+nGenes;
+vMax;
+aMax;
+TMax;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Initialize Population
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+population = InitializePopulation()
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Main Optimization Loop
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+while criteria
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Evaluate Individuals
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Generate New Individuals
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+end 
