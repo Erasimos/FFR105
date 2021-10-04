@@ -16,10 +16,7 @@ aMax = 0;
 TMax = 0;
 pMut = 0;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Data
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-fitness = zeros(nIndividuals);
+deltaT = 0.1; % seconds
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Initialize Population
@@ -35,7 +32,7 @@ while criteria
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Evaluate Individuals
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    fitness = EvaluateIndividuals(population, fitness);
+    fitness = EvaluateIndividuals(population);
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Generate New Individuals

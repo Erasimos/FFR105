@@ -1,13 +1,13 @@
-function [Pp, deltaGear] = EvaluateFFNN(v_vmax, a_amx, Tb_Tmax, wIH, wHO)
+function [Pp, deltaGear] = EvaluateFFNN(v_vmax, a_amax, Tb_Tmax, wIH, wHO)
 
 % Input to hidden layer
 inputHiddenLayer = zeros(size(wIH,1),1);
 
 for iNeuron = 1:size(inputHiddenLayer, 1)
-    sum = 0;
-    sum = sum + wIH(iNeuron, 1)*v_vmax;
-    sum = sum + wIH(iNeuron, 2)*a_amx;
-    sum = sum + wIH(iNeuron, 3)*Tb_Tmax;
+    sum = wIH(iNeuron, 1); % First add bias term
+    sum = sum + wIH(iNeuron, 2)*v_vmax;
+    sum = sum + wIH(iNeuron, 3)*a_amax;
+    sum = sum + wIH(iNeuron, 4)*Tb_Tmax;
     inputHiddenLayer(iNeuron) = Sigmoid(sum);
 end 
 
@@ -15,8 +15,10 @@ end
 output = zeros(size(wHO,1),1);
 
 for iNeuron = 1:size(output, 1)
-    sum = 0;
-    for iInput = 1:size(inputHiddenLayer,1)
+
+    sum = wHO(iNeuron, 1); % First add bias term
+    
+    for iInput = 2:size(inputHiddenLayer,1)
         sum = sum + wHO(iNeuron, iInput)*inputHiddenLayer(iInput);
     end 
     output(iNeuron) = Sigmoid(sum);
