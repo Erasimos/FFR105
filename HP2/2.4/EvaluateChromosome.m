@@ -1,4 +1,4 @@
-function fitnessVal = EvaluateChromosome(chromosome, functionData, variableRegisters, constantRegisters)
+function fitnessVal = EvaluateChromosome(chromosome, functionData, registers)
 
     errorSum = 0;
     K = size(functionData, 1);
@@ -6,15 +6,14 @@ function fitnessVal = EvaluateChromosome(chromosome, functionData, variableRegis
     for k = 1:K
         
         % Set variable register 1
-        variableRegisters(1) = functionData(k, 1); 
+        registers(1) = functionData(k, 1); 
         
         % ExecuteInstructions
-        variableRegisters = ExecuteInstructions(chromosome, variableRegisters, constantRegisters);
-        errorVal = variableRegisters(1);
+        registers = ExecuteInstructions(chromosome, registers);
+        errorVal = registers(1);
         errorSum = errorSum + (errorVal - functionData(k,2))^2;
     end 
     
     e = sqrt(errorSum/K);
     fitnessVal = 1/e;
-    
 end 

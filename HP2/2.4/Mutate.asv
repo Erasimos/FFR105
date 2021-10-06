@@ -1,0 +1,16 @@
+function mutatedChromosome = Mutate(pMut, chromosome)
+    mutatedChromosome = chromosome;
+    for i = 1:size(chromosome, 1)
+        
+        p = rand;
+        if p <= pMut
+            % mutate
+            
+            switch mod(i, 4)
+                case 
+                    cq
+   
+            
+        end 
+    end 
+end 
