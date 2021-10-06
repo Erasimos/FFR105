@@ -35,9 +35,11 @@ function fitnessValue = EvaluateIndividual(individual)
     Ch = 40;
     L = 1000; 
     gear = 7;
+    gearChangeFrequency = 1; % min seconds required to pass between gear changes
     
     timeSteps = 0;
     velocitySum = 0;
+    lastGearChange = 0;
     
     while traveledDistance < L
         
@@ -57,13 +59,19 @@ function fitnessValue = EvaluateIndividual(individual)
         % Get values from the FFNN
         [Pp, deltaGear] = EvaluateFFNN(input1, input2, input3, wIH, wHO);
         
-        % Change gears if allowed
-        if deltaGear > 0.5
-            gear = min(gear + 1, 7);
-        else 
-            gear = max(gear - 1, 1);
-        end 
+        % Change gears if desired and allowed
+        lastGearChange = lastGearChange + deltaT;
         
+        if lastGearChange >= gearChangeFrequency
+            if deltaGear > 1/3
+                gear = min(gear + 1, 7);
+            elseif (1/3 <= deltaGear) && (deltaGear < 2/3) 
+                gear = max(gear - 1, 1);
+            else
+                % No gear change
+            end
+        end 
+         
         % Fb
         [Fb, Tb] = GetFb(Tmax, M, g, Pp, Tamb, Ch, Tau, Tb);
         

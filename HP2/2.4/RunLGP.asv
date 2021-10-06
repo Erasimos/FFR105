@@ -1,0 +1,12 @@
+% Linear Genetic P
+
+
+% PARAMETERS
+M = 10;
+N = 10;
+operators = ['+' '-' 'x' '/'];
+pMut = 0.04;
+tournamentSize = 5;
+pTour = 0.75;
+pCross = 0.2;
+nIndividuals
