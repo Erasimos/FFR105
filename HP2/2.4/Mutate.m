@@ -1,11 +1,12 @@
-function mutatedChromosome = Mutate(pMut, chromosome, nVariableRegisters, nConstantRegisters)
+function mutatedChromosome = Mutate(chromosome, nVariableRegisters, nConstantRegisters)
     mutatedChromosome = chromosome;
-    for i = 1:length(chromosome)
-        
+    nGenes = length(chromosome);
+    pMutVary = (1/nGenes)*3;
+    for i = 1:nGenes
         p = rand;
-        if p <= pMut
-            % mutate
+        if p <= pMutVary
             
+            % mutate
             switch mod(i, 4)
                 case 1
                     % Allowed operand range [1, 4]

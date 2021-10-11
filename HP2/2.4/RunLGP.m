@@ -1,26 +1,34 @@
-% Linear Genetic Programming for fitting the 
-% function g(x) = 
-% (a0 + a1x + a2x^2 + ... + apx^p) / (b0 + b1x + b2x^2 + ... + bqx^q)
 
 clear all
 clc
 
-% PARAMETERS
-M = 10; % number of variable registers
-N = 10; % number of constant registers
-operators = ['+' '-' 'x' '/'];
-pMut = 0.04;
-tournamentSize = 5;
-pTour = 0.75;
-pCross = 0.2;
-nIndividuals = 100;
-minNumberOfGenes = 1;
-maxNumberOfGenes = 25;
+nBatches = 500;
+bestFitness = 0;
+bestIndividual = struct('Chromosome', []);
+bestError = 0;
 
-% Initialization
-variableRegisters = zeros(M,1);
-constantRegisters = zeros(N,1); % TODO change to something suitable
-register = [variableRegisters constantRegisters];% Combine variable and constant registers
-population = InitializePopulation(nIndividuals, minNumberOfGenes, maxNumberOfGenes, M, N);
-functionData = LoadfunctionData();
+for i = 1:nBatches
+    
+    % Print current batch
+    batch = i
+    
+    [fitnessVal, individual] = RunLGPSingle();
+    
+    % Update best fitness
+    if fitnessVal > bestFitness
+        bestFitness = fitnessVal
+        bestIndividual = individual;
+        bestError = 1/fitnessVal
+    end 
+    
+    % stop if the desired aquaracy hs been found
+    if bestError < 0.01
+        break
+    end 
+    
+end
 
+bestChromosome = bestIndividual.Chromosome;
+
+% Add best chromosome to "BestChromosome.m"
+save('bestChromosome.mat', 'bestChromosome');

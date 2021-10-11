@@ -1,13 +1,13 @@
-function population = InitializePopulation(populationSize, minNumberOfGenes, maxNumberOfGenes, nVariableRegisters, nConstantRegisters)
+function population = InitializePopulation(populationSize, minNumberOfInstructions, maxNumberOfInstructions, nVariableRegisters, nConstantRegisters)
 
     population = [];
     for i = 1:populationSize
         
-        nGenes = minNumberOfGenes + fix(rand*(maxNumberOfGenes - minNumberOfGenes));
-        chromosome = zeros(nGenes*4, 1);
+        nInstructions = minNumberOfInstructions + fix(rand*(maxNumberOfInstructions - minNumberOfInstructions));
+        chromosome = zeros(1, nInstructions*4);
         
-        for j = 1:nGenes
-            % Genes will always have four numbers
+        for j = 1:nInstructions
+            % Instructions will always have four numbers
             iGene = 1 + (j-1)*4;
             
              % Allowed range for operand [1,4]
